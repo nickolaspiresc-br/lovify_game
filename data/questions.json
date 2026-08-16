@@ -1,44 +1,1092 @@
 {
   "questions": [
     {
-      "id": "local-0-2672",
-      "text": "Qual é uma coisa simples que sempre melhora seu dia?"
-    },
-    {
-      "id": "local-1-3131",
-      "text": "Qual viagem você gostaria de fazer comigo?"
-    },
-    {
-      "id": "local-2-2166",
-      "text": "Qual comida você escolheria para comer pelo resto da semana?"
-    },
-    {
-      "id": "local-3-1486",
-      "text": "Qual é uma memória nossa que você gosta muito?"
-    },
-    {
       "id": "local-4-1656",
       "text": "Qual filme ou série você acha que combina comigo?"
     },
     {
+      "id": "local-9-8829",
+      "text": "Qual seria um dia perfeito para você?"
+    },
+    {
+      "id": "local-0-8123",
+      "text": "Eu nunca mandei uma mensagem para a pessoa errada falando dela."
+    },
+    {
+      "id": "local-1-5912",
+      "text": "Eu nunca fingi estar dormindo para não conversar."
+    },
+    {
+      "id": "local-2-3487",
+      "text": "Eu nunca olhei o celular do parceiro escondido."
+    },
+    {
+      "id": "local-3-9201",
+      "text": "Eu nunca esqueci uma data importante de namoro ou aniversário."
+    },
+    {
+      "id": "local-4-1543",
+      "text": "Eu nunca fingi gostar de uma música só para impressionar."
+    },
+    {
+      "id": "local-5-6789",
+      "text": "Eu nunca dei um presente que recebi de outra pessoa."
+    },
+    {
+      "id": "local-6-2310",
+      "text": "Eu nunca pesquisei o ex do meu parceiro nas redes sociais."
+    },
+    {
+      "id": "local-7-8945",
+      "text": "Eu nunca fingi que gostava da comida da sogra/sogro."
+    },
+    {
+      "id": "local-8-4123",
+      "text": "Eu nunca desmarquei um compromisso dando uma desculpa esfarrapada."
+    },
+    {
+      "id": "local-9-7561",
+      "text": "Eu nunca tive um sonho romântico com alguém conhecido e fiquei com vergonha."
+    },
+    {
+      "id": "local-10-3892",
+      "text": "Eu nunca planejei um futuro inteiro com alguém na primeira semana."
+    },
+    {
+      "id": "local-11-9456",
+      "text": "Eu nunca guardei um segredo bizarro da infância até hoje."
+    },
+    {
+      "id": "local-12-1278",
+      "text": "Eu nunca curti uma foto antiga sem querer enquanto stalkeava."
+    },
+    {
+      "id": "local-13-5634",
+      "text": "Eu nunca fiz uma cena de ciúmes por algo bobo."
+    },
+    {
+      "id": "local-14-8012",
+      "text": "Eu nunca fingi saber sobre um assunto só para parecer interessante num encontro."
+    },
+    {
+      "id": "local-15-2467",
+      "text": "Eu nunca rindo no meio de um momento sério do casal."
+    },
+    {
+      "id": "local-16-6901",
+      "text": "Eu nunca deixei de responder uma mensagem só para fazer charme."
+    },
+    {
+      "id": "local-17-3145",
+      "text": "Eu nunca ensaiei uma discussão no chuveiro antes de conversar."
+    },
+    {
+      "id": "local-18-7823",
+      "text": "Eu nunca menti sobre meu gosto musical num primeiro encontro."
+    },
+    {
+      "id": "local-19-4567",
+      "text": "Eu nunca comprei algo escondido e disse que foi super barato."
+    },
+    {
+      "id": "local-20-9134",
+      "text": "Eu nunca assisti ao episódio de uma série sozinho(a) depois de prometer ver junto."
+    },
+    {
+      "id": "local-21-2856",
+      "text": "Eu nunca guardei uma lembrança de um amor antigo."
+    },
+    {
+      "id": "local-22-6412",
+      "text": "Eu nunca mandei áudio bêbado(a) declarando amor."
+    },
+    {
+      "id": "local-23-1089",
+      "text": "Eu nunca fingi estar doente para ter carinho extra."
+    },
+    {
+      "id": "local-24-7345",
+      "text": "Eu nunca confundi o nome de alguém num momento constrangedor."
+    },
+    {
+      "id": "local-25-3901",
+      "text": "Eu nunca passei a noite em claro só pensando no outro."
+    },
+    {
+      "id": "local-26-8267",
+      "text": "Eu nunca fiz uma promessa de amor que sabia que ia dar trabalho cumprir."
+    },
+    {
+      "id": "local-27-4723",
+      "text": "Eu nunca mandei indireta nos stories esperando que a pessoa visse."
+    },
+    {
+      "id": "local-28-9580",
+      "text": "Eu nunca menti sobre o preço de uma roupa de lingerie/pijama."
+    },
+    {
+      "id": "local-29-2146",
+      "text": "Eu nunca fiquei encarando a tela esperando o 'digitando...' aparecer."
+    },
+    {
+      "id": "local-30-6712",
+      "text": "Eu nunca guardei o papel de um chiclete ou ingresso como recordação do encontro."
+    },
+    {
+      "id": "local-31-3378",
+      "text": "Eu nunca tive inveja de um casal de filme."
+    },
+    {
+      "id": "local-32-8091",
+      "text": "Eu nunca fingi gostar de um filme ruim só para ficar abraçado(a)."
+    },
+    {
+      "id": "local-33-4654",
+      "text": "Eu nunca tive crise de riso num momento de carinho profundo."
+    },
+    {
+      "id": "local-34-9230",
+      "text": "Eu nunca saí na rua usando uma peça de roupa do parceiro(a)."
+    },
+    {
+      "id": "local-35-1867",
+      "text": "Eu nunca imaginei como seriam nossos filhos."
+    },
+    {
+      "id": "local-36-5423",
+      "text": "Eu nunca fiz um prato diferente só para postar ou impressionar."
+    },
+    {
+      "id": "local-37-8901",
+      "text": "Eu nunca troquei o plano de sair para ficar assistindo filme debaixo do cobertor."
+    },
+    {
+      "id": "local-38-3567",
+      "text": "Eu nunca fiquei com vergonha de dançar na frente do parceiro(a)."
+    },
+    {
+      "id": "local-39-7123",
+      "text": "Eu nunca mandei figurinha ousada no grupo errado por engano."
+    },
+    {
+      "id": "local-40-2789",
+      "text": "Quem é mais provável de esquecer onde estacionou o carro?"
+    },
+    {
+      "id": "local-41-6345",
+      "text": "Quem é mais provável de dormir durante um filme no cinema?"
+    },
+    {
+      "id": "local-42-1901",
+      "text": "Quem é mais provável de gastar todo o dinheiro em comida num festival?"
+    },
+    {
+      "id": "local-43-8456",
+      "text": "Quem é mais provável de chorar vendo um comercial emocionante?"
+    },
+    {
+      "id": "local-44-4012",
+      "text": "Quem é mais provável de propor uma viagem de última hora?"
+    },
+    {
+      "id": "local-45-9678",
+      "text": "Quem é mais provável de acordar mal-humorado de manhã?"
+    },
+    {
+      "id": "local-46-3234",
+      "text": "Quem é mais provável de virar a noite jogando ou lendo?"
+    },
+    {
+      "id": "local-47-7890",
+      "text": "Quem é mais provável de fazer amizade com o garçom no restaurante?"
+    },
+    {
+      "id": "local-48-2456",
+      "text": "Quem é mais provável de esquecer de responder uma mensagem por dias?"
+    },
+    {
+      "id": "local-49-6012",
+      "text": "Quem é mais provável de perder a chave da casa?"
+    },
+    {
+      "id": "local-50-1578",
+      "text": "Quem é mais provável de planejar o roteiro de viagem minuto a minuto?"
+    },
+    {
+      "id": "local-51-7134",
+      "text": "Quem é mais provável de rir na hora errada numa situação séria?"
+    },
+    {
+      "id": "local-52-3690",
+      "text": "Quem é mais provável de trazer um animal de rua para casa?"
+    },
+    {
+      "id": "local-53-8246",
+      "text": "Quem é mais provável de ganhar uma discussão no cansaço?"
+    },
+    {
+      "id": "local-54-4802",
+      "text": "Quem é mais provável de estragar uma surpresa por ansiedade?"
+    },
+    {
+      "id": "local-55-9358",
+      "text": "Quem é mais provável de mandar mensagem de 'bom dia' com meme engraçado?"
+    },
+    {
+      "id": "local-56-2914",
+      "text": "Quem é mais provável de gastar horas escolhendo o que comer no aplicativo?"
+    },
+    {
+      "id": "local-57-6470",
+      "text": "Quem é mais provável de se empolgar e cantar alto no carro?"
+    },
+    {
+      "id": "local-58-1026",
+      "text": "Quem é mais provável de guardar mágoa de uma bobagem por horas?"
+    },
+    {
+      "id": "local-59-7582",
+      "text": "Quem é mais provável de dar o melhor presente de aniversário?"
+    },
+    {
+      "id": "local-60-3138",
+      "text": "Quem é mais provável de querer tirar mil fotos antes de começar a comer?"
+    },
+    {
+      "id": "local-61-8694",
+      "text": "Quem é mais provável de ficar doente e virar um bebê carente?"
+    },
+    {
+      "id": "local-62-4250",
+      "text": "Quem é mais provável de planejar um jantar à luz de velas do nada?"
+    },
+    {
+      "id": "local-63-9806",
+      "text": "Quem é mais provável de dormir primeiro na maratona de séries?"
+    },
+    {
+      "id": "local-64-2362",
+      "text": "Quem é mais provável de gastar mais do que devia em um hobby?"
+    },
+    {
+      "id": "local-65-6918",
+      "text": "Quem é mais provável de inventar uma receita maluca na cozinha?"
+    },
+    {
+      "id": "local-66-1474",
+      "text": "Quem é mais provável de demorar mais para se arrumar antes de sair?"
+    },
+    {
+      "id": "local-67-7030",
+      "text": "Quem é mais provável de puxar assunto com desconhecidos no elevador?"
+    },
+    {
+      "id": "local-68-3586",
+      "text": "Quem é mais provável de lembrar exatamente o que vestíamos no primeiro encontro?"
+    },
+    {
+      "id": "local-69-8142",
+      "text": "Quem é mais provável de ficar com ciúmes sem admitir?"
+    },
+    {
+      "id": "local-70-4698",
+      "text": "Quem é mais provável de propor uma brincadeira ousada no meio do dia?"
+    },
+    {
+      "id": "local-71-9254",
+      "text": "Quem é mais provável de iniciar uma briga de travesseiros?"
+    },
+    {
+      "id": "local-72-1810",
+      "text": "Quem é mais provável de mandar mensagem fofa no meio do expediente?"
+    },
+    {
+      "id": "local-73-5366",
+      "text": "Quem é mais provável de arrumar a cama perfeitamente todo dia?"
+    },
+    {
+      "id": "local-74-8922",
+      "text": "Quem é mais provável de esquecer o guarda-chuva em dia de tempestade?"
+    },
+    {
+      "id": "local-75-3478",
+      "text": "Quem é mais provável de tomar a iniciativa em um momento quente?"
+    },
+    {
+      "id": "local-76-7034",
+      "text": "Quem é mais provável de inventar um apelido carinhoso bizarro?"
+    },
+    {
+      "id": "local-77-2590",
+      "text": "Quem é mais provável de puxar a coberta todinha para si durante a noite?"
+    },
+    {
+      "id": "local-78-6146",
+      "text": "Quem é mais provável de surpreender o outro com o doce favorito sem motivo?"
+    },
+    {
+      "id": "local-79-1702",
+      "text": "Quem é mais provável de querer andar de mãos dadas o tempo todo?"
+    },
+    {
+      "id": "local-80-8258",
+      "text": "Qual é a sua lembrança favorita de quando nos conhecemos?"
+    },
+    {
+      "id": "local-81-3814",
+      "text": "Qual foi o momento em que você percebeu que estava apaixonado(a)?"
+    },
+    {
+      "id": "local-82-9370",
+      "text": "Se pudéssemos viajar agora para qualquer lugar do mundo, para onde iríamos?"
+    },
+    {
+      "id": "local-83-2926",
+      "text": "Qual é a música que sempre faz você lembrar da gente?"
+    },
+    {
+      "id": "local-84-6482",
+      "text": "Qual foi a conversa mais profunda que já tivemos?"
+    },
+    {
+      "id": "local-85-1038",
+      "text": "Qual é a mania minha que você acha mais engraçada ou fofa?"
+    },
+    {
+      "id": "local-86-7594",
+      "text": "O que eu faço que te deixa instantaneamente com borboletas no estômago?"
+    },
+    {
+      "id": "local-87-3150",
+      "text": "Qual foi o lugar mais inusitado em que já trocamos carinhos?"
+    },
+    {
+      "id": "local-88-8706",
+      "text": "Qual é o seu tipo de cafuné ou massagem favorito?"
+    },
+    {
+      "id": "local-89-4262",
+      "text": "Qual é o elogio meu que mais marcou você até hoje?"
+    },
+    {
+      "id": "local-90-9818",
+      "text": "Qual é a fantasia que você gostaria de realizar ao meu lado?"
+    },
+    {
+      "id": "local-91-2374",
+      "text": "Qual roupagem ou estilo meu você considera extremamente atraente?"
+    },
+    {
+      "id": "local-92-6930",
+      "text": "O que torna nosso abraço tão especial para você?"
+    },
+    {
+      "id": "local-93-1486",
+      "text": "Qual foi o encontro mais divertido e sem planejamento que já tivemos?"
+    },
+    {
+      "id": "local-94-7042",
+      "text": "Qual é o hábito do nosso relacionamento que você mais valoriza?"
+    },
+    {
+      "id": "local-95-3598",
+      "text": "Se você tivesse que descrever nossa conexão em uma palavra, qual seria?"
+    },
+    {
+      "id": "local-96-8154",
+      "text": "Qual é a olhar meu que indica que estou querendo você por perto?"
+    },
+    {
+      "id": "local-97-4710",
+      "text": "Qual é o perfume ou cheiro que te faz lembrar de mim na hora?"
+    },
+    {
+      "id": "local-98-9266",
+      "text": "Qual é a foto nossa que você mais ama e por quê?"
+    },
+    {
+      "id": "local-99-1822",
+      "text": "O que mais te atrai na minha personalidade no dia a dia?"
+    },
+    {
+      "id": "local-100-5378",
+      "text": "Qual é a maior loucura de amor que faríamos um pelo outro?"
+    },
+    {
+      "id": "local-101-8934",
+      "text": "Qual é o sonho a longo prazo que você mais quer realizar comigo?"
+    },
+    {
+      "id": "local-102-3490",
+      "text": "Qual foi o momento em que mais sentimos cumplicidade e sintonia?"
+    },
+    {
+      "id": "local-103-7046",
+      "text": "Qual é o tipo de beijo que você mais gosta de receber?"
+    },
+    {
+      "id": "local-104-2602",
+      "text": "O que te deixa mais relaxado(a) quando estamos sozinhos no quarto?"
+    },
+    {
+      "id": "local-105-6158",
+      "text": "Qual foi a surpresa que eu fiz que mais te impressionou?"
+    },
+    {
+      "id": "local-106-1714",
+      "text": "Qual é a brincadeira particular ou piada interna que só nós entendemos?"
+    },
+    {
+      "id": "local-107-7270",
+      "text": "Qual é a qualidade minha que você mais orgulha de contar aos outros?"
+    },
+    {
+      "id": "local-108-2826",
+      "text": "Como seria a nossa noite perfeita de folga em casa?"
+    },
+    {
+      "id": "local-109-8382",
+      "text": "Qual é a coisa mais carinhosa que eu disse para você recentemente?"
+    },
+    {
+      "id": "local-110-3938",
+      "text": "Qual é o lugar da casa onde você mais gosta de ficar abraçado(a)?"
+    },
+    {
+      "id": "local-111-9494",
+      "text": "Qual é a característica física minha que mais chama sua atenção?"
+    },
+    {
+      "id": "local-112-2050",
+      "text": "O que você sente quando seguro sua mão em público?"
+    },
+    {
+      "id": "local-113-5606",
+      "text": "Qual é a aventura que ainda não fizemos, mas está no topo da sua lista?"
+    },
+    {
+      "id": "local-114-1162",
+      "text": "Qual foi o presente mais significativo que trocamos?"
+    },
+    {
+      "id": "local-115-7718",
+      "text": "Qual é a coisa que eu faço na cozinha que você mais adora?"
+    },
+    {
+      "id": "local-116-3274",
+      "text": "O que faz nosso relacionamento ser único em comparação com qualquer outro?"
+    },
+    {
+      "id": "local-117-8830",
+      "text": "Qual é o gesto simples do cotidiano que demonstra todo nosso afeto?"
+    },
+    {
+      "id": "local-118-4386",
+      "text": "Como você descreveria a energia da nossa química?"
+    },
+    {
+      "id": "local-119-9942",
+      "text": "Qual é a memória mais romântica que guardamos de um dia de chuva?"
+    },
+    {
+      "id": "local-120-2498",
+      "text": "Qual é a lingerie ou roupa que você acha irresistível em mim?"
+    },
+    {
+      "id": "local-121-7054",
+      "text": "Qual é o local do corpo que, se eu tocar, te deixa arrepiado(a)?"
+    },
+    {
+      "id": "local-122-1610",
+      "text": "Qual é a hora do dia em que você se sente mais sensual?"
+    },
+    {
+      "id": "local-123-7166",
+      "text": "Qual foi o beijo mais provocante que já demos em público sem ninguém perceber?"
+    },
+    {
+      "id": "local-124-2722",
+      "text": "Qual é a palavra ou sussurro no ouvido que te deixa sem reação?"
+    },
+    {
+      "id": "local-125-8278",
+      "text": "Qual é o tipo de preliminar que você acha indispensável?"
+    },
+    {
+      "id": "local-126-3834",
+      "text": "Qual foi o cenário mais marcante em que tivemos um momento íntimo?"
+    },
+    {
+      "id": "local-127-9390",
+      "text": "Se tivéssemos um final de semana inteiro trancados no quarto, o que não poderia faltar?"
+    },
+    {
+      "id": "local-128-2946",
+      "text": "Qual é o jogo de sedução que você mais gosta de fazer comigo?"
+    },
+    {
+      "id": "local-129-6502",
+      "text": "Qual é a iluminação ideal para um momento especial a dois?"
+    },
+    {
+      "id": "local-130-1058",
+      "text": "Qual é a massagem que você gostaria de me dar ou receber hoje?"
+    },
+    {
+      "id": "local-131-7614",
+      "text": "Qual é a posição em que você se sente mais conectado(a) comigo?"
+    },
+    {
+      "id": "local-132-3170",
+      "text": "O que eu faço com o olhar que te dá a certeza do que vai acontecer mais tarde?"
+    },
+    {
+      "id": "local-133-8726",
+      "text": "Qual é a peça de roupa minha que você gostaria de tirar lentamente?"
+    },
+    {
+      "id": "local-134-4282",
+      "text": "Qual é a música ou playlist que mais combina com nossos momentos quentes?"
+    },
+    {
+      "id": "local-135-9838",
+      "text": "Qual foi a mensagem de texto provocante que você mais gostou de receber minha?"
+    },
+    {
+      "id": "local-136-2394",
+      "text": "Qual é a carícia que mais te faz perder o fôlego?"
+    },
+    {
+      "id": "local-137-6950",
+      "text": "Qual é a experiência ousada que você adoraria testar este mês?"
+    },
+    {
+      "id": "local-138-1506",
+      "text": "O que te dá mais tesão: um beijo lento ou uma pegada mais firme?"
+    },
+    {
+      "id": "local-139-7062",
+      "text": "Qual é o toque que instantaneamente muda o clima da nossa conversa?"
+    },
+    {
+      "id": "local-140-3618",
+      "text": "Qual é o lugar da casa que você acha mais tentador para uma escapada?"
+    },
+    {
+      "id": "local-141-8174",
+      "text": "Qual é a atitude minha na cama que você nunca vai esquecer?"
+    },
+    {
+      "id": "local-142-4730",
+      "text": "Como você prefere começar uma noite de paixão: com conversa e vinho ou direto ao ponto?"
+    },
+    {
+      "id": "local-143-9286",
+      "text": "Qual é o acessório ou detalhe que deixa tudo mais interessante?"
+    },
+    {
+      "id": "local-144-1842",
+      "text": "Qual é a memória mais ardente que veio à sua cabeça hoje?"
+    },
+    {
+      "id": "local-145-5398",
+      "text": "O que você mais gosta de ouvir durante nossos momentos mais íntimos?"
+    },
+    {
+      "id": "local-146-8954",
+      "text": "Qual foi o olhar mais descarado de desejo que trocamos em uma festa?"
+    },
+    {
+      "id": "local-147-3510",
+      "text": "Qual é a sensação que você mais gosta de sentir quando estamos bem colados?"
+    },
+    {
+      "id": "local-148-7066",
+      "text": "Qual é o tipo de abraço que vira beijo provocante em segundos?"
+    },
+    {
+      "id": "local-149-2622",
+      "text": "Qual é a fantasia sutil que você nunca contou a ninguém além de mim?"
+    },
+    {
+      "id": "local-150-6178",
+      "text": "Qual é o superpoder que você gostaria que nosso casal tivesse?"
+    },
+    {
+      "id": "local-151-1734",
+      "text": "Se fôssemos personagens de um livro ou filme, quem seríamos?"
+    },
+    {
+      "id": "local-152-7290",
+      "text": "Qual foi a maior lição que aprender juntos nos ensinou?"
+    },
+    {
+      "id": "local-153-2846",
+      "text": "O que você diria para o nosso 'eu' do primeiro dia de namoro?"
+    },
+    {
+      "id": "local-154-8402",
+      "text": "Qual é a tradição do nosso relacionamento que nunca queremos perder?"
+    },
+    {
+      "id": "local-155-3958",
+      "text": "Se nosso amor fizesse um som ou ritmo, como ele seria?"
+    },
+    {
+      "id": "local-156-9514",
+      "text": "Qual foi o desafio que superamos juntos e que nos fortaleceu?"
+    },
+    {
+      "id": "local-157-2070",
+      "text": "Qual é a sobremesa que define a doçura da nossa relação?"
+    },
+    {
+      "id": "local-158-5626",
+      "text": "Qual é a frase que você sempre quer ouvir quando está num dia difícil?"
+    },
+    {
+      "id": "local-159-1182",
+      "text": "O que eu faço que te transmite total segurança e paz?"
+    },
+    {
+      "id": "local-160-7738",
+      "text": "Qual é o projeto do nosso futuro que mais te deixa empolgado(a)?"
+    },
+    {
+      "id": "local-161-3294",
+      "text": "Qual é o lugar no mundo que parece ter sido feito especialmente para nós dois?"
+    },
+    {
+      "id": "local-162-8850",
+      "text": "Se a gente ganhasse na loteria hoje, qual seria nossa primeira comemoração juntos?"
+    },
+    {
+      "id": "local-163-4406",
+      "text": "Qual é a habilidade minha que você gostaria de aprender?"
+    },
+    {
+      "id": "local-164-9962",
+      "text": "O que torna a nossa parceria tão leve no dia a dia?"
+    },
+    {
+      "id": "local-165-2518",
+      "text": "Qual é a primeira coisa que você pensa ao acordar e me ver ao seu lado?"
+    },
+    {
+      "id": "local-166-7074",
+      "text": "Qual é a risada minha que você mais gosta de provocar?"
+    },
+    {
+      "id": "local-167-1630",
+      "text": "Qual foi a descoberta mais surpreendente sobre mim desde que nos conhecemos?"
+    },
+    {
+      "id": "local-168-7186",
+      "text": "O que significa lar para você quando pensa em nós dois?"
+    },
+    {
+      "id": "local-169-2742",
+      "text": "Qual é a estória engraçada da nossa jornada que sempre contamos para os amigos?"
+    },
+    {
+      "id": "local-170-8298",
+      "text": "Se tivéssemos um lema de casal, qual seria?"
+    },
+    {
+      "id": "local-171-3854",
+      "text": "Qual é a estação do ano que mais combina com nosso estilo de namoro?"
+    },
+    {
+      "id": "local-172-9410",
+      "text": "Qual é o gesto de carinho que te faz esquecer qualquer estresse do trabalho?"
+    },
+    {
+      "id": "local-173-2966",
+      "text": "Qual é a viagem dos sonhos que vamos planejar no próximo ano?"
+    },
+    {
+      "id": "local-174-6522",
+      "text": "Se você pudesse me dar um presente sem limites de preço, o que seria?"
+    },
+    {
+      "id": "local-175-1078",
+      "text": "Qual é o detalhe simples na nossa rotina que faz seu dia valer a pena?"
+    },
+    {
+      "id": "local-176-7634",
+      "text": "O que você mais admira na forma como lidamos com nossas diferenças?"
+    },
+    {
+      "id": "local-177-3190",
+      "text": "Qual é a cor que mais representa nossa sintonia?"
+    },
+    {
+      "id": "local-178-8746",
+      "text": "Como você imagina nosso cantinho perfeito daqui a dez anos?"
+    },
+    {
+      "id": "local-179-4302",
+      "text": "Qual foi o momento em que você sentiu maior orgulho da nossa conquista juntos?"
+    },
+    {
+      "id": "local-180-9858",
+      "text": "O que faz você ter certeza absoluta de que somos a combinação certa?"
+    },
+    {
+      "id": "local-181-2414",
+      "text": "Qual é o abraço que você mais precisa depois de um dia cansativo?"
+    },
+    {
+      "id": "local-182-6970",
+      "text": "Qual é a qualidade que faz você se sentir imbatível quando estamos juntos?"
+    },
+    {
+      "id": "local-183-1526",
+      "text": "Se pudéssemos congelar um único momento do nosso passado, qual seria?"
+    },
+    {
+      "id": "local-184-7082",
+      "text": "Qual é o hábito fofo que desenvolvemos sem perceber com o tempo?"
+    },
+    {
+      "id": "local-185-3638",
+      "text": "O que te dá mais alegria em planejar o final de semana comigo?"
+    },
+    {
+      "id": "local-186-8194",
+      "text": "Qual foi o melhor conselho sobre amor que aplicamos no nosso dia a dia?"
+    },
+    {
+      "id": "local-187-4750",
+      "text": "O que mais te surpreendeu positivamente no convivência comigo?"
+    },
+    {
+      "id": "local-188-9306",
+      "text": "Qual é a promessa silenciosa que renovamos todos os dias?"
+    },
+    {
+      "id": "local-189-1862",
+      "text": "Qual é o sorriso meu que você guarda no coração?"
+    },
+    {
+      "id": "local-190-5418",
+      "text": "Eu nunca dormi na praia ou no parque ao ar livre com o parceiro."
+    },
+    {
+      "id": "local-191-8974",
+      "text": "Quem é mais provável de esquecer o celular carregando na tomada e sair de casa?"
+    },
+    {
+      "id": "local-192-3530",
+      "text": "Qual foi a roupa que eu usei que mais te fez suspirar ao me ver?"
+    },
+    {
+      "id": "local-193-7086",
+      "text": "Qual é o perfume que você acha irresistível para uma noite especial?"
+    },
+    {
+      "id": "local-194-2642",
+      "text": "Qual é a comédia romântica que mais reflete nosso humor de casal?"
+    },
+    {
+      "id": "local-195-6198",
+      "text": "Eu nunca fiz uma surpresa romântica que acabou dando tudo errado no final."
+    },
+    {
+      "id": "local-196-1754",
+      "text": "Quem é mais provável de puxar conversa sobre física, filosofia ou universo no meio da noite?"
+    },
+    {
+      "id": "local-197-7310",
+      "text": "Qual foi o carinho mais reconfortante que você recebeu num momento difícil?"
+    },
+    {
+      "id": "local-198-2866",
+      "text": "Qual é o tipo de toque que instantaneamente acalma qualquer ansiedade sua?"
+    },
+    {
+      "id": "local-199-8422",
+      "text": "Se você pudesse escolher um lugar mágico para nos escondermos no fim de semana, qual seria?"
+    },
+    {
+      "id": "local-0-2672",
+      "text": "Eu nunca..."
+    },
+    {
+      "id": "local-1-3131",
+      "text": "Quem é mais provável de comprar presentes na última hora?"
+    },
+    {
+      "id": "local-2-2166",
+      "text": "Qual foi o detalhe mais marcante no nosso primeiro encontro?"
+    },
+    {
+      "id": "local-3-1486",
+      "text": "Qual é a posição sexual que você acha mais excitante?"
+    },
+    {
+      "id": "local-4-1656",
+      "text": "Eu nunca fiquei com ciúmes de um ator/atriz do cinema..."
+    },
+    {
       "id": "local-5-4136",
-      "text": "Se pudesse aprender qualquer habilidade agora, qual seria?"
+      "text": "Quem é mais provável de planejar uma surpresa romântica?"
     },
     {
       "id": "local-6-1432",
-      "text": "Qual lugar você gostaria de conhecer?"
+      "text": "Qual é o melhor conselho romântico que alguém já lhe deu?"
     },
     {
       "id": "local-7-9181",
-      "text": "Qual presente simples você gostaria de receber?"
+      "text": "Eu nunca disse 'eu te amo' sem estar com certeza..."
     },
     {
       "id": "local-8-8204",
-      "text": "Qual música lembra um momento especial?"
+      "text": "Quem é mais provável de se perder em um mapa sem pedir ajuda?"
     },
     {
       "id": "local-9-8829",
-      "text": "Qual seria um dia perfeito para você?"
+      "text": "Qual foi a coisa mais corajosa que fizemos juntos?"
+    },
+    {
+      "id": "local-10-5512",
+      "text": "Eu nunca chorei por algo trivial como falta de café da manhã..."
+    },
+    {
+      "id": "local-11-7293",
+      "text": "Quem é mais provável de cantar no chuveiro sem vergonha?"
+    },
+    {
+      "id": "local-12-4817",
+      "text": "Qual é a posição que você mais gostaria de experimentar comigo?"
+    },
+    {
+      "id": "local-13-9604",
+      "text": "Eu nunca fiquei com inveja do sucesso de um amigo próximo..."
+    },
+    {
+      "id": "local-14-3728",
+      "text": "Quem é mais provável de decorar o aniversário do outro de surpresa?"
+    },
+    {
+      "id": "local-15-8165",
+      "text": "Qual foi o momento mais íntimo da nossa relação até hoje?"
+    },
+    {
+      "id": "local-16-2974",
+      "text": "Eu nunca menti sobre ter lido uma obra literária que não li..."
+    },
+    {
+      "id": "local-17-6403",
+      "text": "Quem é mais provável de dançar sensualmente para o outro?"
+    },
+    {
+      "id": "local-18-3159",
+      "text": "Qual é o toque que mais te excita? (ex: cabelo, pescoço, mãos)"
+    },
+    {
+      "id": "local-19-7821",
+      "text": "Eu nunca me envolvi romanticamente com alguém apenas por terno..."
+    },
+    {
+      "id": "local-20-4582",
+      "text": "Quem é mais provável de mandar um bilhete de amor por mensagem?"
+    },
+    {
+      "id": "local-21-9265",
+      "text": "Qual foi a brincadeira mais ousada que fizemos juntos?"
+    },
+    {
+      "id": "local-22-1740",
+      "text": "Eu nunca fiquei com raiva de um filme de terror..."
+    },
+    {
+      "id": "local-23-5816",
+      "text": "Quem é mais provável de demonstrar afeto em público?"
+    },
+    {
+      "id": "local-24-6378",
+      "text": "Qual é a parte do seu corpo que você mais gosta quando está excitado(a)?"
+    },
+    {
+      "id": "local-25-2947",
+      "text": "Eu nunca menti sobre ter experimentado algo proibido..."
+    },
+    {
+      "id": "local-26-8431",
+      "text": "Quem é mais provável de escrever cartas de amor à mão?"
+    },
+    {
+      "id": "local-27-5096",
+      "text": "Qual foi o segredo mais pesado entre nós?"
+    },
+    {
+      "id": "local-28-1729",
+      "text": "Eu nunca fiquei com ciúmes de um personagem de anime/filme..."
+    },
+    {
+      "id": "local-29-6843",
+      "text": "Quem é mais provável de planejar uma noite romântica surpresa?"
+    },
+    {
+      "id": "local-30-3581",
+      "text": "Qual é a posição que você quer tentar comigo esta semana?"
+    },
+    {
+      "id": "local-31-7205",
+      "text": "Eu nunca fiquei com inveja de alguém que está solteiro..."
+    },
+    {
+      "id": "local-32-4678",
+      "text": "Quem é mais provável de chamar o outro de 'meu amor' por telefone?"
+    },
+    {
+      "id": "local-33-9154",
+      "text": "Qual foi o gesto mais romântico que alguém já fez com você?"
+    },
+    {
+      "id": "local-34-2867",
+      "text": "Eu nunca usei perfume ou colônia apenas para impressionar..."
+    },
+    {
+      "id": "local-35-6302",
+      "text": "Quem é mais provável de pedir desculpas primeiro após uma briga?"
+    },
+    {
+      "id": "local-36-5749",
+      "text": "Qual é a parte do seu corpo que mais gosta quando eu toco?"
+    },
+    {
+      "id": "local-37-1983",
+      "text": "Eu nunca fiquei com raiva de um amigo por ter acertado na vida..."
+    },
+    {
+      "id": "local-38-4261",
+      "text": "Quem é mais provável de se arrumar especialmente para encantar o parceiro?"
+    },
+    {
+      "id": "local-39-8574",
+      "text": "Qual foi a coisa mais excêntrica que fizemos juntos?"
+    },
+    {
+      "id": "local-40-3058",
+      "text": "Eu nunca fiquei acordado(a) só para conversar com alguém especial..."
+    },
+    {
+      "id": "local-41-6721",
+      "text": "Quem é mais provável de mandar foto durante a noite?"
+    },
+    {
+      "id": "local-42-9483",
+      "text": "Qual é a posição que você mais quer tentar comigo?"
+    },
+    {
+      "id": "local-43-1567",
+      "text": "Eu nunca fiquei com ciúmes de um amor da infância..."
+    },
+    {
+      "id": "local-44-7820",
+      "text": "Quem é mais provável de planejar uma fuga romântica para o fim de semana?"
+    },
+    {
+      "id": "local-45-2394",
+      "text": "Qual foi o segredo mais íntimo entre nós até hoje?"
+    },
+    {
+      "id": "local-46-5018",
+      "text": "Eu nunca menti sobre ter feito algo ousado na cama..."
+    },
+    {
+      "id": "local-47-8742",
+      "text": "Quem é mais provável de demonstrar carinho em público?"
+    },
+    {
+      "id": "local-48-3659",
+      "text": "Qual é a toalha de banho que você mais gostaria de vê-la usando?"
+    },
+    {
+      "id": "local-49-1287",
+      "text": "Eu nunca fiquei com inveja de um casal perfeitamente casado..."
+    },
+    {
+      "id": "local-50-6431",
+      "text": "Quem é mais provável de escrever uma lista de desejos para nossa vida juntos?"
+    },
+    {
+      "id": "local-51-9076",
+      "text": "Qual foi a brincadeira mais hot que fizemos juntos?"
+    },
+    {
+      "id": "local-52-3524",
+      "text": "Eu nunca usei lingerie ou roupa íntima apenas para provocar..."
+    },
+    {
+      "id": "local-53-7860",
+      "text": "Quem é mais provável de dizer 'eu te amo' pela primeira vez?"
+    },
+    {
+      "id": "local-54-2195",
+      "text": "Qual é a posição que você mais quer experimentar comigo esta semana?"
+    },
+    {
+      "id": "local-55-4738",
+      "text": "Eu nunca fiquei com ciúmes de um romance do cinema..."
+    },
+    {
+      "id": "local-56-8203",
+      "text": "Quem é mais provável de planejar uma noite íntima em casa?"
+    },
+    {
+      "id": "local-57-1659",
+      "text": "Qual foi o gesto mais inesquecível entre nós?"
+    },
+    {
+      "id": "local-58-5382",
+      "text": "Eu nunca menti sobre ter tido um crush forte..."
+    },
+    {
+      "id": "local-59-9741",
+      "text": "Quem é mais provável de chamar o outro de 'meu bem' pelas coisas?"
+    },
+    {
+      "id": "local-61-7635",
+      "text": "Eu nunca fiquei com raiva de um amigo que conseguiu o que eu queria..."
+    },
+    {
+      "id": "local-62-2986",
+      "text": "Quem é mais provável de se arrumar para uma noite especial?"
+    },
+    {
+      "id": "local-64-1873",
+      "text": "Eu nunca fiquei acordado(a) só para mandar um bom dia..."
+    },
+    {
+      "id": "local-65-4398",
+      "text": "Quem é mais provável de mandar uma selfie sensual para o outro?"
+    },
+    {
+      "id": "local-66-7025",
+      "text": "Qual é a posição que você mais quer tentar esta semana?"
+    },
+    {
+      "id": "local-67-3614",
+      "text": "Eu nunca fiquei com ciúmes de um personagem de romance..."
+    },
+    {
+      "id": "local-69-5902",
+      "text": "Qual foi o segredo mais íntimo entre nós?"
+    },
+    {
+      "id": "local-73-5624",
+      "text": "Eu nunca fiquei com inveja de alguém que está em um relacionamento feliz..."
+    },
+    {
+      "id": "local-76-1536",
+      "text": "Eu nunca usei perfume ou colônia apenas para provocar..."
+    },
+    {
+      "id": "local-100-2563",
+      "text": "Eu nunca usei língua apenas para provocar..."
     }
   ]
 }
