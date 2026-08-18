@@ -3,6 +3,9 @@ import json
 import random
 import string
 import threading
+import unicodedata
+import re
+from difflib import SequenceMatcher
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit, join_room
 
@@ -13,6 +16,9 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 DATA_DIR = "data"
 QUESTIONS_FILE = os.path.join(DATA_DIR, "questions.json")
 USED_FILE = os.path.join(DATA_DIR, "used.json")
+
+# Limiar de similaridade para considerar acerto por aproximação (0.7 = 70%)
+SIMILARITY_THRESHOLD = 0.70
 
 rooms = {}
 lock = threading.Lock()
@@ -57,50 +63,39 @@ def code4():
             return code
 
 
-def generate_questions_with_openrouter():
-    """Optional IA generation. Put OPENROUTER_API_KEY in the environment."""
-    import requests
+def normalize_text(text):
+    """Remove acentos, caracteres especiais, pontuação e normaliza espaços."""
+    if not text:
+        return ""
+    text = text.lower().strip()
+    # Remove acentuação
+    text = unicodedata.normalize("NFD", text)
+    text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+    # Remove pontuações e caracteres especiais
+    text = re.sub(r"[^\w\s]", "", text)
+    # Normaliza múltiplos espaços
+    return " ".join(text.split())
 
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    if not api_key:
-        return []
 
-    prompt = """Gere 20 perguntas divertidas para um jogo de casal.
-Cada pergunta deve permitir uma resposta curta ou média e ser adequada para adolescentes.
-Responda SOMENTE com JSON válido neste formato:
-{"questions":[{"text":"..."}]}
-Não repita perguntas comuns demais."""
+def check_approximate_match(real, guess, threshold=SIMILARITY_THRESHOLD):
+    """Verifica se o palpite é aceitável por substring ou similaridade."""
+    norm_real = normalize_text(real)
+    norm_guess = normalize_text(guess)
 
-    try:
-        response = requests.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "http://localhost:5000",
-                "X-Title": "Lovify Game"
-            },
-            json={
-                "model": os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
-                "messages": [{"role": "user", "content": prompt}],
-                "temperature": 0.9
-            },
-            timeout=45
-        )
-        response.raise_for_status()
-        content = response.json()["choices"][0]["message"]["content"].strip()
+    if not norm_real or not norm_guess:
+        return False
 
-        if content.startswith("```"):
-            content = content.split("\n", 1)[1]
-            content = content.rsplit("```", 1)[0].strip()
+    # Acerto exato após normalizar
+    if norm_real == norm_guess:
+        return True
 
-        data = json.loads(content)
-        generated = data.get("questions", [])
-        return [{"id": f"ai-{random.randint(100000,999999)}", "text": q["text"]}
-                for q in generated if isinstance(q, dict) and q.get("text")]
-    except Exception as e:
-        print("OpenRouter error:", e)
-        return []
+    # Se um texto estiver contido inteiramente no outro
+    if norm_guess in norm_real or norm_real in norm_guess:
+        return True
+
+    # Cálculo por razão de similaridade de Levenshtein/SequenceMatcher
+    similarity = SequenceMatcher(None, norm_real, norm_guess).ratio()
+    return similarity >= threshold
 
 
 def ensure_question_batch(room_code):
@@ -110,15 +105,14 @@ def ensure_question_batch(room_code):
 
     available = [q for q in questions if q.get("id") not in used_ids]
 
-    if not available:
-        generated = generate_questions_with_openrouter()
-        if generated:
-            questions.extend(generated)
-            save_questions(questions)
-            available = generated
+    # Se todas as perguntas do JSON já foram usadas, reinicia a lista
+    if not available and questions:
+        used[room_code] = []
+        save_used(used)
+        available = questions
 
     if not available:
-        # Fallback: the game works without an API key.
+        # Fallback local apenas caso o questions.json esteja completamente vazio
         fallback = [
             "Qual é uma coisa simples que sempre melhora seu dia?",
             "Qual viagem você gostaria de fazer comigo?",
@@ -131,10 +125,10 @@ def ensure_question_batch(room_code):
             "Qual música lembra um momento especial?",
             "Qual seria um dia perfeito para você?"
         ]
-        questions.extend([
+        questions = [
             {"id": f"local-{i}-{random.randint(1000,9999)}", "text": text}
             for i, text in enumerate(fallback)
-        ])
+        ]
         save_questions(questions)
         available = questions
 
@@ -226,7 +220,6 @@ def start_game(data):
     room["guesses"] = {}
     room["current_question"] = ensure_question_batch(room_code)
 
-    # Mark question as used immediately.
     used = load_used()
     used.setdefault(room_code, []).append(room["current_question"]["id"])
     save_used(used)
@@ -261,7 +254,6 @@ def submit_answer(data):
     if len(room["answers"]) == 2:
         room["status"] = "guessing"
 
-        # Each player must guess the other player's answer.
         players = list(room["players"].keys())
         target_names = {
             players[0]: room["players"][players[1]]["name"],
@@ -293,10 +285,6 @@ def submit_guess(data):
         emit("answer_received", {"message": "Palpite enviado. Esperando o outro jogador..."})
         return
 
-    # MVP scoring: exact normalized match = 2 points; otherwise 0.
-    def norm(s):
-        return " ".join(s.lower().strip().split())
-
     players = list(room["players"].keys())
     results = []
 
@@ -304,7 +292,9 @@ def submit_guess(data):
         other = players[1] if sid == players[0] else players[0]
         real = room["answers"][other]
         guessed = room["guesses"][sid]
-        points = 2 if norm(real) == norm(guessed) else 0
+        
+        is_match = check_approximate_match(real, guessed)
+        points = 2 if is_match else 0
         room["players"][sid]["score"] += points
 
         results.append({
@@ -337,8 +327,6 @@ def next_round(data):
 
     question = ensure_question_batch(room_code)
 
-    # If the selected question is already used, ensure_question_batch should
-    # normally avoid it; mark it now.
     used = load_used()
     used.setdefault(room_code, []).append(question["id"])
     save_used(used)
@@ -375,5 +363,5 @@ def disconnect():
 
 if __name__ == "__main__":
     ensure_files()
-    print("Lovify rodando em http://localhost:5000")
+    print("Site rodando em http://localhost:5000")
     socketio.run(app, host="0.0.0.0", port=5000, debug=True)
