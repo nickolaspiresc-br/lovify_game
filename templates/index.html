@@ -41,52 +41,105 @@
       <div id="error" class="error" hidden></div>
     </div>
 
-    <!-- SALA DE ESPERA -->
-    <div class="card" id="room" hidden>
-      <div class="status">Aguardando Parceiro(a)...</div>
-      <p style="text-align: center; margin-top: 10px; color: var(--text-muted); font-size: 0.95rem;">
-        Compartilhe este código para jogarem juntos:
-      </p>
-      <div class="room-code" id="bigCode">----</div>
+    <!-- TELA DA SALA CONECTADA (MENU CENTRAL) -->
+    <div id="mainDashboard" hidden>
+      <!-- MENU CENTRAL / TABS DE NAVEGAÇÃO -->
+      <nav class="central-menu">
+        <button class="tab-btn active" id="tabGamesBtn" onclick="switchTab('games')">
+          🎮 Jogos
+        </button>
+        <button class="tab-btn" id="tabChatBtn" onclick="switchTab('chat')">
+          💬 Chat <span id="chatBadge" class="unread-badge" hidden></span>
+        </button>
+      </nav>
 
-      <label>Jogadores Conectados:</label>
-      <ul id="players"></ul>
+      <!-- CONTEÚDO DAS TABS -->
+      <div class="tab-content">
+        <!-- ABA 1: JOGOS -->
+        <section id="gamesTabSection">
+          <!-- SALA DE ESPERA DA RODADA -->
+          <div class="card" id="room">
+            <div class="status">Aguardando Parceiro(a)...</div>
+            <p style="text-align: center; margin-top: 10px; color: var(--text-muted); font-size: 0.95rem;">
+              Compartilhe este código para jogarem juntos:
+            </p>
+            <div class="room-code" id="bigCode">----</div>
 
-      <button id="startBtn" onclick="startGame()" style="width: 100%;" hidden>Iniciar Jogo! 🚀</button>
-    </div>
+            <label>Jogadores Conectados:</label>
+            <ul id="players"></ul>
 
-    <!-- TELA PRINCIPAL DO JOGO -->
-    <div class="card" id="game" hidden>
-      <div class="game-header">
-        <span class="status" id="status">Rodada 1</span>
+            <button id="startBtn" onclick="startGame()" style="width: 100%;" hidden>Iniciar Jogo! 🚀</button>
+          </div>
+
+          <!-- TELA PRINCIPAL DO JOGO DE QUIZ -->
+          <div class="card" id="game" hidden>
+            <div class="game-header">
+              <span class="status" id="status">Rodada 1</span>
+            </div>
+
+            <h2 class="question-title" id="question">Carregando Pergunta...</h2>
+
+            <!-- FASE 1: RESPONDER -->
+            <div id="answerPhase">
+              <label for="answer">Sua Resposta Sincera:</label>
+              <textarea id="answer" placeholder="Escreva aqui sua resposta..."></textarea>
+              <button onclick="submitAnswer()" style="width: 100%;">Enviar Resposta 💌</button>
+            </div>
+
+            <!-- FASE 2: ADIVINHAR -->
+            <div id="guessPhase" hidden>
+              <label for="guess">Qual você acha que foi a resposta do seu par?</label>
+              <textarea id="guess" placeholder="Acho que a Paçoquinha respondeu..."></textarea>
+              <button onclick="submitGuess()" style="width: 100%;">Enviar Palpite 🧠💖</button>
+            </div>
+
+            <!-- FASE 3: RESULTADOS DA RODADA -->
+            <div id="resultPhase" hidden>
+              <h3 style="text-align: center; color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px;">
+                Resultado da Rodada 🎉
+              </h3>
+              <div id="results"></div>
+              <button id="nextBtn" onclick="nextRound()" style="width: 100%;" hidden>Próxima Rodada ➡️</button>
+            </div>
+
+            <div class="message" id="gameMessage"></div>
+          </div>
+        </section>
+
+        <!-- ABA 2: CHAT INTERATIVO -->
+        <section id="chatTabSection" hidden>
+          <div class="card chat-card">
+            <div class="chat-header">
+              <h3>Bate-papo do Casal 💌</h3>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+              <div class="chat-placeholder">
+                Nenhuma mensagem enviada ainda. Diga um oi para a sua Paçoquinha! ✨
+              </div>
+            </div>
+
+            <!-- PREVIEW DE ARQUIVO ANEXADO -->
+            <div id="filePreviewContainer" class="file-preview-container" hidden>
+              <span id="filePreviewName"></span>
+              <button type="button" class="btn-remove-file" onclick="cancelFileUpload()">✕</button>
+            </div>
+
+            <div class="chat-input-box">
+              <label for="chatFileInput" class="attach-btn" title="Anexar arquivo">
+                📎
+              </label>
+              <input type="file" id="chatFileInput" style="display: none;" onchange="handleFileSelect(event)">
+              
+              <input type="text" id="chatInput" placeholder="Digite uma mensagem..." autocomplete="off" onkeydown="if(event.key==='Enter') sendChatMessage()">
+              
+              <button type="button" onclick="sendChatMessage()" class="send-chat-btn">
+                💌
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
-
-      <h2 class="question-title" id="question">Carregando Pergunta...</h2>
-
-      <!-- FASE 1: RESPONDER -->
-      <div id="answerPhase">
-        <label for="answer">Sua Resposta Sincera:</label>
-        <textarea id="answer" placeholder="Escreva aqui sua resposta..."></textarea>
-        <button onclick="submitAnswer()" style="width: 100%;">Enviar Resposta 💌</button>
-      </div>
-
-      <!-- FASE 2: ADIVINHAR -->
-      <div id="guessPhase" hidden>
-        <label for="guess">Qual você acha que foi a resposta do seu par?</label>
-        <textarea id="guess" placeholder="Acho que a Paçoquinha respondeu..."></textarea>
-        <button onclick="submitGuess()" style="width: 100%;">Enviar Palpite 🧠💖</button>
-      </div>
-
-      <!-- FASE 3: RESULTADOS DA RODADA -->
-      <div id="resultPhase" hidden>
-        <h3 style="text-align: center; color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px;">
-          Resultado da Rodada 🎉
-        </h3>
-        <div id="results"></div>
-        <button id="nextBtn" onclick="nextRound()" style="width: 100%;" hidden>Próxima Rodada ➡️</button>
-      </div>
-
-      <div class="message" id="gameMessage"></div>
     </div>
   </main>
 

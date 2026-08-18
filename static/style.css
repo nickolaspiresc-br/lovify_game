@@ -126,6 +126,49 @@ header .subtitle {
   font-weight: 600;
 }
 
+/* MENU CENTRAL ESTILIZADO (TABS) */
+.central-menu {
+  display: flex;
+  background: var(--card-bg);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--card-border);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.tab-btn {
+  flex: 1;
+  margin-top: 0;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  box-shadow: none;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--primary) 0%, #ff527b 100%);
+  color: white;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.unread-badge {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-gold);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
+
 /* CARD COM GLASSMORPHISM SUAVE */
 .card {
   background: var(--card-bg);
@@ -314,6 +357,169 @@ button.secondary:hover {
   color: var(--text-muted);
   font-style: normal;
   font-weight: 600;
+}
+
+/* ESTILOS DO CHAT DA ABA CENTRAL */
+.chat-card {
+  display: flex;
+  flex-direction: column;
+  height: 480px;
+  padding: 20px 18px;
+}
+
+.chat-header h3 {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--text-main);
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--card-border);
+  margin-bottom: 12px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 4px;
+}
+
+.chat-placeholder {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.chat-bubble.me {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--primary) 0%, #ff527b 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.chat-bubble.partner {
+  align-self: flex-start;
+  background: #ffffff;
+  color: var(--text-main);
+  border: 1.5px solid var(--card-border);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-sender {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  opacity: 0.9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-edit-msg {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.chat-media img {
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+  max-height: 180px;
+  object-fit: cover;
+}
+
+.chat-file-link a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
+
+.edited-tag {
+  font-size: 0.7rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.file-preview-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff0f3;
+  border: 1px solid var(--card-border);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.btn-remove-file {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.chat-input-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.attach-btn {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-md);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.attach-btn:hover {
+  background: #fff0f3;
+}
+
+.chat-input-box input[type="text"] {
+  flex: 1;
+  padding: 12px 14px;
+}
+
+.send-chat-btn {
+  margin-top: 0;
+  padding: 12px 16px;
+  font-size: 1.1rem;
 }
 
 /* MENSAGENS E ERROS */

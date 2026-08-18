@@ -5,20 +5,22 @@ import string
 import threading
 import unicodedata
 import re
+import uuid
 from difflib import SequenceMatcher
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from flask_socketio import SocketIO, emit, join_room
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret")
+UPLOAD_FOLDER = os.path.join("data", "uploads")
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 DATA_DIR = "data"
 QUESTIONS_FILE = os.path.join(DATA_DIR, "questions.json")
 USED_FILE = os.path.join(DATA_DIR, "used.json")
 
-# Limiar de similaridade para considerar acerto por aproximação (0.7 = 70%)
-SIMILARITY_THRESHOLD = 0.70
+SIMILARITY_THRESHOLD = 0.50
 
 rooms = {}
 lock = threading.Lock()
@@ -26,6 +28,7 @@ lock = threading.Lock()
 
 def ensure_files():
     os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     if not os.path.exists(QUESTIONS_FILE):
         with open(QUESTIONS_FILE, "w", encoding="utf-8") as f:
             json.dump({"questions": []}, f, ensure_ascii=False, indent=2)
@@ -64,36 +67,28 @@ def code4():
 
 
 def normalize_text(text):
-    """Remove acentos, caracteres especiais, pontuação e normaliza espaços."""
     if not text:
         return ""
     text = text.lower().strip()
-    # Remove acentuação
     text = unicodedata.normalize("NFD", text)
     text = "".join(c for c in text if unicodedata.category(c) != "Mn")
-    # Remove pontuações e caracteres especiais
     text = re.sub(r"[^\w\s]", "", text)
-    # Normaliza múltiplos espaços
     return " ".join(text.split())
 
 
 def check_approximate_match(real, guess, threshold=SIMILARITY_THRESHOLD):
-    """Verifica se o palpite é aceitável por substring ou similaridade."""
     norm_real = normalize_text(real)
     norm_guess = normalize_text(guess)
 
     if not norm_real or not norm_guess:
         return False
 
-    # Acerto exato após normalizar
     if norm_real == norm_guess:
         return True
 
-    # Se um texto estiver contido inteiramente no outro
     if norm_guess in norm_real or norm_real in norm_guess:
         return True
 
-    # Cálculo por razão de similaridade de Levenshtein/SequenceMatcher
     similarity = SequenceMatcher(None, norm_real, norm_guess).ratio()
     return similarity >= threshold
 
@@ -105,14 +100,12 @@ def ensure_question_batch(room_code):
 
     available = [q for q in questions if q.get("id") not in used_ids]
 
-    # Se todas as perguntas do JSON já foram usadas, reinicia a lista
     if not available and questions:
         used[room_code] = []
         save_used(used)
         available = questions
 
     if not available:
-        # Fallback local apenas caso o questions.json esteja completamente vazio
         fallback = [
             "Qual é uma coisa simples que sempre melhora seu dia?",
             "Qual viagem você gostaria de fazer comigo?",
@@ -146,6 +139,28 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/uploads/<filename>")
+def uploaded_file(filename):
+    return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+
+
+@app.route("/api/upload", methods=["POST"])
+def upload_file_route():
+    if "file" not in request.files:
+        return {"error": "Nenhum arquivo enviado"}, 400
+    file = request.files["file"]
+    if file.filename == "":
+        return {"error": "Arquivo sem nome"}, 400
+
+    ext = os.path.splitext(file.filename)[1]
+    unique_name = f"{uuid.uuid4().hex}{ext}"
+    save_path = os.path.join(app.config["UPLOAD_FOLDER"], unique_name)
+    file.save(save_path)
+
+    file_url = f"/uploads/{unique_name}"
+    return {"url": file_url, "filename": file.filename}
+
+
 @socketio.on("create_room")
 def create_room(data):
     name = (data.get("name") or "").strip()
@@ -163,7 +178,8 @@ def create_room(data):
             "status": "waiting",
             "current_question": None,
             "answers": {},
-            "guesses": {}
+            "guesses": {},
+            "chat_messages": []
         }
 
     join_room(room_code)
@@ -340,6 +356,57 @@ def next_round(data):
     }, to=room_code)
 
 
+# HANDLERS DO CHAT
+@socketio.on("send_chat_message")
+def send_chat_message(data):
+    room_code = str(data.get("room") or "")
+    text = (data.get("text") or "").strip()
+    file_info = data.get("file")
+    room = rooms.get(room_code)
+
+    if not room or request.sid not in room["players"]:
+        return
+
+    if not text and not file_info:
+        return
+
+    msg_id = f"msg-{uuid.uuid4().hex[:8]}"
+    sender_name = room["players"][request.sid]["name"]
+
+    msg_obj = {
+        "id": msg_id,
+        "sender_sid": request.sid,
+        "sender_name": sender_name,
+        "text": text,
+        "file": file_info,
+        "edited": False
+    }
+
+    room["chat_messages"].append(msg_obj)
+    socketio.emit("chat_message_received", msg_obj, to=room_code)
+
+
+@socketio.on("edit_chat_message")
+def edit_chat_message(data):
+    room_code = str(data.get("room") or "")
+    msg_id = data.get("msg_id")
+    new_text = (data.get("text") or "").strip()
+    room = rooms.get(room_code)
+
+    if not room or not msg_id or not new_text:
+        return
+
+    for msg in room["chat_messages"]:
+        if msg["id"] == msg_id and msg["sender_sid"] == request.sid:
+            msg["text"] = new_text
+            msg["edited"] = True
+            socketio.emit("chat_message_edited", {
+                "id": msg_id,
+                "text": new_text
+            }, to=room_code)
+            break
+
+
 @socketio.on("disconnect")
 def disconnect():
     for room_code, room in list(rooms.items()):
@@ -363,5 +430,5 @@ def disconnect():
 
 if __name__ == "__main__":
     ensure_files()
-    print("Site rodando em http://localhost:5000")
+    print("Rodando em http://localhost:5000")
     socketio.run(app, host="0.0.0.0", port=5000, debug=True)

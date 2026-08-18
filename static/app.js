@@ -2,8 +2,11 @@ const socket = io();
 
 let room = null;
 let isAdmin = false;
+let pendingFile = null;
 
-// Inicializa os corações de fundo dinamicamente
+// ============================================================================
+// INITIALIZATION & BACKGROUND EFFECTS
+// ============================================================================
 document.addEventListener("DOMContentLoaded", () => {
   createHeartsBackground();
 });
@@ -27,8 +30,10 @@ function createHeartsBackground() {
   }
 }
 
+// Helper para selecionar elementos por ID
 const $ = (id) => document.getElementById(id);
 
+// Exibe mensagens de erro na tela
 function showError(message) {
   if ($("error")) {
     $("error").hidden = false;
@@ -41,6 +46,9 @@ function nameValue() {
   return $("name").value.trim();
 }
 
+// ============================================================================
+// ROOM & CONNECTION MANAGEMENT
+// ============================================================================
 function createRoom() {
   if (!nameValue()) {
     showError("Por favor, digite seu nome antes de continuar 💕");
@@ -83,11 +91,20 @@ socket.on("joined_room", data => {
   openRoom();
 });
 
+/**
+ * Abre a sala principal e exibe o Código da Sala GLOBALMENTE.
+ * O código fica no topo da dashboard principal (fora de qualquer sub-jogo).
+ */
 function openRoom() {
   $("home").hidden = true;
-  $("room").hidden = false;
+  $("mainDashboard").hidden = false;
+  
+  // Exibe o código da sala na interface principal
   if ($("bigCode")) $("bigCode").textContent = room;
   $("startBtn").hidden = !isAdmin;
+  
+  // Garante que o usuário veja o menu de jogos inicialmente
+  showGamesMenu();
 }
 
 socket.on("room_update", data => {
@@ -98,11 +115,48 @@ socket.on("room_update", data => {
   $("startBtn").hidden = !isAdmin || !data.can_start;
 });
 
+// ============================================================================
+// NAVEGAÇÃO ENTRE TABS PRINCIPAIS (JOGOS / CHAT)
+// ============================================================================
+function switchTab(tab) {
+  if (tab === 'games') {
+    $("gamesTabSection").hidden = false;
+    $("chatTabSection").hidden = true;
+    $("tabGamesBtn").classList.add("active");
+    $("tabChatBtn").classList.remove("active");
+  } else if (tab === 'chat') {
+    $("gamesTabSection").hidden = true;
+    $("chatTabSection").hidden = false;
+    $("tabChatBtn").classList.add("active");
+    $("tabGamesBtn").classList.remove("active");
+    $("chatBadge").hidden = true;
+    scrollToBottomChat();
+  }
+}
+
+// ============================================================================
+// MENU DE JOGOS & LÓGICA DO JOGO DE PERGUNTA E PALPITE
+// ============================================================================
+
+/**
+ * Exibe o Menu Principal de Jogos.
+ * Permite selecionar qual jogo rodar mantendo a sala visível.
+ */
+function showGamesMenu() {
+  if ($("gamesMenu")) $("gamesMenu").hidden = false;
+  if ($("game")) $("game").hidden = true;
+}
+
+/**
+ * Inicia o jogo selecionado (Pergunta e Palpite) enviado pelo servidor.
+ */
 function startGame() {
   socket.emit("start_game", { room });
 }
 
 socket.on("new_question", data => {
+  // Esconde o menu de jogos e a área de espera da sala, abrindo a tela da partida
+  if ($("gamesMenu")) $("gamesMenu").hidden = true;
   $("room").hidden = true;
   $("game").hidden = false;
 
@@ -173,6 +227,136 @@ socket.on("error_message", data => {
   showError(data.message);
 });
 
+// ============================================================================
+// CHAT & ENVIO DE ARQUIVOS
+// ============================================================================
+
+/**
+ * Lida com a escolha do arquivo via <input type="file">
+ */
+async function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData
+    });
+    const data = await response.json();
+    if (data.url) {
+      pendingFile = data;
+      $("filePreviewName").textContent = `📎 ${data.filename}`;
+      $("filePreviewContainer").hidden = false;
+    }
+  } catch (err) {
+    showError("Erro ao carregar o arquivo.");
+  }
+}
+
+/**
+ * Reseta completamente o estado do arquivo anexado e limpa o valor no DOM.
+ */
+function cancelFileUpload() {
+  pendingFile = null;
+  if ($("filePreviewContainer")) $("filePreviewContainer").hidden = true;
+  if ($("chatFileInput")) $("chatFileInput").value = ""; // Garante a limpeza do elemento HTML
+}
+
+/**
+ * Envia a mensagem do chat e limpa o campo de texto E o arquivo anexado.
+ */
+function sendChatMessage() {
+  const input = $("chatInput");
+  const text = input.value.trim();
+
+  if (!text && !pendingFile) return;
+
+  socket.emit("send_chat_message", {
+    room,
+    text: text,
+    file: pendingFile
+  });
+
+  // Limpa o texto da digitação
+  input.value = "";
+
+  // Reset total do anexo para que o arquivo não permaneça no input
+  cancelFileUpload();
+}
+
+socket.on("chat_message_received", msg => {
+  const container = $("chatMessages");
+  const placeholder = container.querySelector(".chat-placeholder");
+  if (placeholder) placeholder.remove();
+
+  const isMe = msg.sender_sid === socket.id;
+  const msgDiv = document.createElement("div");
+  msgDiv.className = `chat-bubble ${isMe ? 'me' : 'partner'}`;
+  msgDiv.id = msg.id;
+
+  let fileContent = "";
+  if (msg.file) {
+    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(msg.file.url);
+    if (isImage) {
+      fileContent = `<div class="chat-media"><img src="${msg.file.url}" alt="Imagem enviada" /></div>`;
+    } else {
+      fileContent = `<div class="chat-file-link"><a href="${msg.file.url}" target="_blank" download>💾 ${escapeHtml(msg.file.filename)}</a></div>`;
+    }
+  }
+
+  let editBtnHtml = isMe ? `<button class="btn-edit-msg" onclick="promptEditMessage('${msg.id}')">✏️</button>` : "";
+
+  msgDiv.innerHTML = `
+    <div class="chat-sender">${escapeHtml(msg.sender_name)} ${editBtnHtml}</div>
+    ${fileContent}
+    <div class="chat-text">${escapeHtml(msg.text)}</div>
+    <span class="edited-tag" ${msg.edited ? '' : 'hidden'}> (editado)</span>
+  `;
+
+  container.appendChild(msgDiv);
+  scrollToBottomChat();
+
+  if ($("chatTabSection").hidden) {
+    $("chatBadge").hidden = false;
+  }
+});
+
+function promptEditMessage(msgId) {
+  const msgEl = $(msgId);
+  if (!msgEl) return;
+  const currentText = msgEl.querySelector(".chat-text").innerText;
+  const newText = prompt("Edite sua mensagem:", currentText);
+
+  if (newText !== null && newText.trim() !== "") {
+    socket.emit("edit_chat_message", {
+      room,
+      msg_id: msgId,
+      text: newText.trim()
+    });
+  }
+}
+
+socket.on("chat_message_edited", data => {
+  const msgEl = $(data.id);
+  if (msgEl) {
+    msgEl.querySelector(".chat-text").innerText = data.text;
+    const tag = msgEl.querySelector(".edited-tag");
+    if (tag) tag.hidden = false;
+  }
+});
+
+function scrollToBottomChat() {
+  const container = $("chatMessages");
+  if (container) container.scrollTop = container.scrollHeight;
+}
+
+// ============================================================================
+// UTILITÁRIOS
+// ============================================================================
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
