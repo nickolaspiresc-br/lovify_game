@@ -428,7 +428,12 @@ def disconnect():
         break
 
 
+ensure_files()
+
 if __name__ == "__main__":
-    ensure_files()
-    print("Rodando em http://localhost:5000")
-    socketio.run(app, host="0.0.0.0", port=5000, debug=True)
+    # Captura a porta definida pelo Render ou usa 5000 localmente
+    port = int(os.environ.get("PORT", 5000))
+    
+    print(f"Rodando localmente em http://localhost:{port}")
+    # debug=True apenas em desenvolvimento local!
+    socketio.run(app, host="0.0.0.0", port=port, debug=True)
