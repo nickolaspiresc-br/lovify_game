@@ -155,10 +155,9 @@ function startGame() {
 }
 
 socket.on("new_question", data => {
-  // Esconde o menu de jogos e a área de espera da sala, abrindo a tela da partida
-  if ($("gamesMenu")) $("gamesMenu").hidden = true;
-  $("room").hidden = true;
-  $("game").hidden = false;
+  // Oculta a área de espera da sala e exibe a tela do jogo
+  if ($("room")) $("room").hidden = true;
+  if ($("game")) $("game").hidden = false;
 
   $("status").textContent = `Rodada ${data.round}`;
   $("question").textContent = data.question;
